@@ -26,9 +26,14 @@ export default function Signup() {
       }
 
       window.location = "/login";
-    } catch {
-  alert('Signup failed');
+    }  catch (err) {
+  console.log("SIGNUP ERROR FULL:", err);
+  console.log("STATUS:", err.response?.status);
+  console.log("DATA:", err.response?.data);
+
+  alert(err.response?.data?.message || `Signup failed (${err.response?.status || "No response"})`);
 }
+
   };
 
   return (
