@@ -1,0 +1,83 @@
+.upload-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #2f2a65, #0b0b0f);
+  padding: 20px;
+  color: white;
+}
+
+.upload-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.upload-card h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.upload-subtitle {
+  margin-top: 8px;
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+
+.upload-box {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input[type="file"] {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed rgba(255,255,255,0.25);
+  color: white;
+}
+
+.file-preview {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+}
+
+.file-size {
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* reuse buttons */
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #22c55e);
+  color: white;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-light {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.btn-light:hover {
+  background: rgba(255, 255, 255, 0.18);
+}

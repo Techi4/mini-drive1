@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+}
+
+/* Center container */
+.container {
+  width: 100%;
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+/* Links */
+a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard */
+.dashboard {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.file-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-card button {
+  width: auto;
+  padding: 6px 10px;
+  margin-left: 8px;
+}

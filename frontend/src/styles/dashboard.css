@@ -1,0 +1,254 @@
+.dash {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2f2a65, #0b0b0f);
+  color: #fff;
+  padding: 18px;
+}
+
+/* NAVBAR */
+.dash-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.dash-brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.dash-logo {
+  height: 48px;
+  width: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #7c3aed, #22c55e);
+  box-shadow: 0 15px 40px rgba(124, 58, 237, 0.25);
+}
+
+.dash-brand h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.dash-subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.dash-user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dash-user-info {
+  text-align: right;
+}
+.dash-user-name {
+  margin: 0;
+  font-weight: 700;
+}
+.dash-user-email {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* BODY */
+.dash-body {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.dash-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.dash-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.dash-text {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* STATS */
+.dash-stats {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-label {
+  opacity: 0.7;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.stat-value {
+  margin: 10px 0 0;
+  font-size: 1.3rem;
+}
+
+/* FILES */
+.dash-files {
+  margin-top: 22px;
+}
+
+.dash-files-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.2s;
+}
+
+.file-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.file-icon {
+  height: 52px;
+  width: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.file-info {
+  flex: 1;
+}
+.file-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.file-meta {
+  margin: 6px 0 0;
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+.file-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* EMPTY + LOADER */
+.empty, .loader {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.25);
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* BUTTONS */
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #22c55e);
+  color: white;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.9);
+  color: #fff;
+}
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+.btn-light {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* RESPONSIVE */
+@media (max-width: 650px) {
+  .dash-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dash-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dash-user-info {
+    text-align: left;
+  }
+  .dash-stats {
+    grid-template-columns: 1fr;
+  }
+}
