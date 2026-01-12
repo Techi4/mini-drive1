@@ -12,31 +12,29 @@ connectDB();
 
 const app = express();
 
-/* ✅ CORS must come BEFORE routes */
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "http://localhost:3002",
-      "https://mini-drive1-omega.vercel.app" // ✅ your Vercel frontend
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-  })
-);
+/* ✅ 1) CORS FIRST */
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://mini-drive1-omega.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
+/* ✅ 2) Handle preflight */
+app.options("*", cors());
+
+/* ✅ 3) Body parser */
 app.use(express.json());
 
-/* ✅ Static uploads */
+/* ✅ 4) Routes */
 app.use("/uploads", express.static("uploads"));
-
-/* ✅ Routes */
 app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 
-/* ✅ Global error handler */
+/* ✅ 5) Error handler */
 app.use((err, req, res, next) => {
   console.error("🔥 GLOBAL ERROR:", err);
   res.status(500).json({ message: err.message || "Internal Server Error" });
