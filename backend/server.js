@@ -3,8 +3,10 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import connectDB from "./config/db.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
+import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import fileRoutes from "./routes/fileRoutes.js";
 
@@ -12,29 +14,49 @@ connectDB();
 
 const app = express();
 
-/* ✅ 1) CORS FIRST */
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://mini-drive1-omega.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
+/* ✅ Fix __dirname for ES Module */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-/* ✅ 2) Handle preflight */
+/* ✅ CORS (must be before routes) */
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      if (!origin) return cb(null, true);
+
+      // allow localhost
+      if (origin.startsWith("http://localhost")) return cb(null, true);
+
+      // allow all vercel domains
+      if (origin.includes(".vercel.app")) return cb(null, true);
+
+      return cb(new Error("CORS blocked: " + origin));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+/* ✅ Handle OPTIONS preflight */
 app.options("*", cors());
 
-/* ✅ 3) Body parser */
+/* ✅ Middlewares */
 app.use(express.json());
 
-/* ✅ 4) Routes */
-app.use("/uploads", express.static("uploads"));
+/* ✅ Serve uploads correctly */
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+/* ✅ Routes */
 app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 
-/* ✅ 5) Error handler */
+/* ✅ Health check */
+app.get("/api/health", (req, res) => {
+  res.json({ ok: true, message: "Mini Drive backend is running ✅" });
+});
+
+/* ✅ Global error handler */
 app.use((err, req, res, next) => {
   console.error("🔥 GLOBAL ERROR:", err);
   res.status(500).json({ message: err.message || "Internal Server Error" });
