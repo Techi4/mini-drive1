@@ -14,20 +14,20 @@ connectDB();
 
 const app = express();
 
-/* ✅ Fix __dirname for ES Module */
+/* ✅ Required for ES module __dirname */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/* ✅ CORS (must be before routes) */
+/* ✅ CORS MUST come before routes */
 app.use(
   cors({
     origin: (origin, cb) => {
       if (!origin) return cb(null, true);
 
-      // allow localhost
+      // Allow localhost
       if (origin.startsWith("http://localhost")) return cb(null, true);
 
-      // allow all vercel domains
+      // Allow all Vercel domains (production + preview)
       if (origin.includes(".vercel.app")) return cb(null, true);
 
       return cb(new Error("CORS blocked: " + origin));
@@ -38,22 +38,22 @@ app.use(
   })
 );
 
-/* ✅ Handle OPTIONS preflight */
+/* ✅ Preflight */
 app.options("*", cors());
 
-/* ✅ Middlewares */
+/* ✅ Middleware */
 app.use(express.json());
 
-/* ✅ Serve uploads correctly */
+/* ✅ Serve uploaded files properly */
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 /* ✅ Routes */
 app.use("/api/auth", authRoutes);
 app.use("/api/files", fileRoutes);
 
-/* ✅ Health check */
+/* ✅ Health route */
 app.get("/api/health", (req, res) => {
-  res.json({ ok: true, message: "Mini Drive backend is running ✅" });
+  res.json({ ok: true, message: "Mini Drive backend running ✅" });
 });
 
 /* ✅ Global error handler */
